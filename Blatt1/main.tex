@@ -1,0 +1,166 @@
+\documentclass{scrreprt}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\title{Grundlagen der Betriebssysteme}
+\author{Tim Luchterhand, Paul Nykiel}
+
+\setcounter{chapter}{1}
+
+\begin{document}
+    \maketitle
+    \section{Aufgabe 1}
+    \begin{enumerate}[label = (\alph*)]
+        \item 
+            \begin{align*}
+                89 / 2  =  44 & \text{ Rest } 1 \\
+                44 / 2  =  22 & \text{ Rest } 0 \\
+                22 / 2  =  11 & \text{ Rest } 0 \\
+                11 / 2  =  5  & \text{ Rest } 1 \\
+                5 / 2  =  2 & \text{ Rest } 1 \\
+                2 /2  =  1 & \text{ Rest } 0 \\
+                1 / 2  =  0 & \text{ Rest } 1 
+            \end{align*}
+            \begin{equation*}
+                \Rightarrow {89}_{10} = {1011001}_2
+            \end{equation*}
+        \item
+            Zuerst Umrechnung ins Dezimalsystem um Division zu erleichtern:
+            \begin{equation*}
+                {32}_7 =  3 * 7^1 + 2  * 7^0  = {23}_{10} 
+            \end{equation*}
+            \begin{align*}
+                23 / 5 =  4 & \text{ Rest } 3\\
+                4 / 5 =  0 & \text{ Rest } 4
+            \end{align*}
+            \begin{equation*}
+                \Rightarrow  {32}_7 = {43}_5
+            \end{equation*}
+        \item
+            \begin{equation*}
+                {4360}_{10} = {4096}_{10} + {256}_{10} + 8_{10} = 2^{12} + 2^{8} + 2^{3} = {1000100001000}_2
+            \end{equation*}
+        \item
+            \begin{eqnarray*}
+                & {1414215376}_8 & = \\
+                & {001\ 100\ 001\ 100\ 010\ 001\ 101\ 011\ 111\ 110}_2 & = \\
+                & {1100\ 0011\ 0001\ 0001\ 1010\ 1111\ 1110}_2 & = \\
+                & {C\ 3\ 1\ 1\ A\ F\ E} &
+            \end{eqnarray*}
+    \end{enumerate}
+
+    \section{Aufgabe 2}
+    \begin{enumerate}[label = (\alph*)]
+        \item
+            \begin{equation*}
+                {CAFFEE}_{16} = {14\ 12\ 17\ 17\ 16\ 16}_8 = {141217171616}_8
+            \end{equation*}
+        \item
+            \begin{equation*}
+                3072 = 2048 + 1024 = 2^{11} + 2^{10} = {110000000000}_2
+            \end{equation*}
+        \item
+            \begin{equation*}
+                {1724656}_8 = {001\ 111\ 010\ 100\ 110\ 101\ 110}_2 = {01111\ 01010\ 01101\ 01110}_2 
+                    = {F\ A\ D\ E}_{32}
+            \end{equation*}
+        \item 
+            \begin{equation*}
+                1316_2 = 1024 + 256 + 32 + 4 = 2^{10} + 2^8 + 2^5 + 2^2 = {10100100100}_2
+            \end{equation*}
+    \end{enumerate}
+
+    \section{Aufgabe 3}
+    \begin{enumerate}[label = (\alph*)]
+        \item 
+            \begin{align*}
+                & {1011001}_2 \\
+                + & \hspace{0.4cm} {11000}_2  \\
+                & \hspace{0.2cm} {\scriptstyle 1\, 1} \\
+                \cline{1-2} 
+                = &{1110001}_2  
+            \end{align*}
+        \item 
+            \begin{align*}
+                & \hspace{0.4cm} {101101}_2  \\
+                + & \hspace{0.2cm} {1011111}_2  \\
+                & {\scriptstyle1\, 1\, 1\, 1\, 1\, 1\, 1} \\
+                \cline{1-2} 
+                = &{10001100}_2  
+            \end{align*}
+        \item 
+            \begin{align*}
+                & \hspace{0.2cm} {1001100}_2  \\
+                + & \hspace{0.2cm} {1100010}_2  \\
+                &  {\scriptstyle 1} \\
+                \cline{1-2} 
+                = &{10101110}_2  
+            \end{align*}
+        \item 
+            \begin{align*}
+                & \hspace{0.2cm} {101011}_2  \\
+                + & \hspace{0.2cm} {110111}_2  \\
+                & {\scriptstyle1\, 1 \, 1 \, 1 \, 1 \, 1}\\
+                \cline{1-2} 
+                = &{1100010}_2  
+            \end{align*}
+    \end{enumerate}
+
+    \section{Aufgabe 4}
+    \begin{enumerate}[label = (\alph*)]
+        \item 
+            \begin{eqnarray*}
+                {2018}_{10} &=& {0000 0111\ 1110 0010}_2 \\
+                {-2018}_{10} &=& {1111 1000\ 0001 1101}_2 + 1 \\
+                &=& {1111 1000\ 0001 1110}_2
+            \end{eqnarray*}
+        \item
+            \begin{eqnarray*}
+                {27346}_{10} &=& {0110 1010\ 1101 0011}_2 \\
+                {-27346}_{10} &=& {1001 0101\ 0010 1100}_2 + 1\\
+                &=& {1001010100101101}_2
+            \end{eqnarray*}
+    \end{enumerate}
+
+    \section{Aufgabe 5}
+    \begin{enumerate}[label = (\alph*)]
+        \item 
+            \begin{align*}
+                &{10110}_2 \cdot {111}_2 \\
+                \cline{1-2}
+                &\hspace{0.2cm}{10110}_2 \\ 
+                + &\hspace{0.4cm}  {10110}_2 \\
+                + &\hspace{0.6cm} {10110}_2\\
+                \cline{1-2}
+                &{10011010}_2
+            \end{align*}
+        \item
+            \begin{align*}
+                &{10010010}_2 \cdot {1001001}_2 \\
+                \cline{1-2}
+                &{10010010}_2 \\
+                + &\hspace{0.2cm} {0}_2 \\
+                + &\hspace{0.4cm} {0}_2 \\
+                + &\hspace{0.6cm} {10010010}_2 \\
+                + &\hspace{0.8cm} {0}_2 \\
+                + &\hspace{1.0cm} {0}_2 \\
+                + &\hspace{1.2cm} {10010010}_2 \\
+                \cline{1-2}
+                &{10100110100010}_2
+            \end{align*}
+        \item
+            \begin{align*}
+                &{10011110}_2 \cdot {10101}_2 \\
+                \cline{1-2}
+                &{10011110}_2 \\
+                +&\hspace{0.2cm}0_2 \\
+                +&\hspace{0.4cm}{10011110}_2  \\
+                +&\hspace{0.6cm}0_2 \\
+                +&\hspace{0.8cm}{10011110}_2  \\
+                \cline{1-2}
+                &{110011110110}_2
+            \end{align*}
+    \end{enumerate}
+\end{document}
