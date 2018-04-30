@@ -7,6 +7,8 @@ script:
     - mkdir output
     - latexmk -pdf Blatt01/main.tex
     - mv main.pdf output/Blatt01.pdf
+    - latexmk -pdf Blatt02/main.tex
+    - mv main.pdf output/Blatt02.pdf
 
 deploy:
     provider: pages

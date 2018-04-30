@@ -1,0 +1,86 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+
+\title{Grundlagen der Betriebssysteme}
+\author{Tim Luchterhand, Paul Nykiel}
+
+\begin{document}
+    \maketitle
+    \section{Festkomma Darstellung}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+            \begin{equation*}
+                7.75 = 4 + 2 + 1 + 0.5 + 0.25 = {00111110}_2
+            \end{equation*}
+        \item
+            \begin{equation*}
+                2.71 \approx 2 + 0.5 + 0.25 = {00010110}_2
+            \end{equation*}
+            Fehler: $\abs{2.71 - 2.75} = 0.04$
+        \item
+            \begin{equation*}
+                5.375 = 4 + 1 + 0.25 + 0.125 = {00101011}_2
+            \end{equation*}
+        \item
+            \begin{equation*}
+                9.12 \approx 8 + 1 + 0.125 = {01001001}_2
+            \end{equation*}
+            Fehler : $\abs{9.12 - 9.125} = 0.005$
+    \end{enumerate}
+    \section{Gleitkomma Darstellung}
+    Vorzeichen in \textcolor{red}{rot}, Exponent in \textcolor{green}{grün}, Mantisse in \textcolor{blue}{blau}.
+    \begin{enumerate}[label = (\alph*)]
+        \item
+            \begin{equation*}
+                17.75 = {(-1)}^0 \cdot 71 \cdot 2^{125-127} = \textcolor{red}{0}\ \textcolor{green}{011111101}\ \textcolor{blue}{00000000000000001000111}
+            \end{equation*}
+        \item 
+            \begin{equation*}
+                3.625 = {(-1)}^0 \cdot 29 \cdot 2^{124 - 127} = \textcolor{red}{0}\ \textcolor{green}{011010010}\ \textcolor{blue}{000000000000000011101}
+            \end{equation*}
+    \end{enumerate}
+    \section{Bitinterpretation}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            \begin{eqnarray*}
+                &&{4496A000}_{16} \\&=&
+                0100\ 0100\ 1001\ 0101\ 1010\ 0000\ 0000\ 0000 \\&=& 
+                0\ 10001001\ 00101011010000000000000 \\&=&
+                {(-1)}^0 \cdot 1417216 \cdot 2^{137-127} \\&=&
+                {1451229184}_{10}
+            \end{eqnarray*}
+        \item
+            Erste Zahl:
+            \begin{eqnarray*}
+                &&{4496}_{16} \\&=&
+                4 \cdot 16^3 + 4 \cdot 16^2 + 9 \cdot 16^1 + 6 \cdot 16^0 \\&=&
+                {17558}_{10}
+            \end{eqnarray*}
+            Zweite Zahl:
+            \begin{eqnarray*}
+                &&{A000}_{16} \\&=&
+                10 \cdot 16^3 + 0 \cdot 16^2 + 0 \cdot 16^1 + 0 \cdot 16^0 \\&=&
+                {40960}_{10}
+            \end{eqnarray*}
+    \end{enumerate}
+    \section{UTF8 Darstellung}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            \begin{equation*}
+                \text{U+}202E = 0010\ 0000\ 0010\ 1110
+            \end{equation*}
+        \item
+            \begin{equation*}
+                1111\ 0000\ 1001\ 1111\ 1001\ 1000\ 1000\ 1000 = \text{U+}F09F9888
+            \end{equation*}
+    \end{enumerate}
+\end{document}
