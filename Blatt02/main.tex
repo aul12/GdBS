@@ -41,22 +41,22 @@
     \begin{enumerate}[label = (\alph*)]
         \item
             \begin{equation*}
-                17.75 = {(-1)}^0 \cdot 71 \cdot 2^{125-127} = \textcolor{red}{0}\ \textcolor{green}{011111101}\ \textcolor{blue}{00000000000000001000111}
+                17.75 = {(-1)}^0 \cdot (1+0.109375) \cdot 2^{131-127} = \textcolor{red}{0}\ \textcolor{green}{10000011}\ \textcolor{blue}{00011100000000000000000}
             \end{equation*}
         \item 
             \begin{equation*}
-                3.625 = {(-1)}^0 \cdot 29 \cdot 2^{124 - 127} = \textcolor{red}{0}\ \textcolor{green}{011010010}\ \textcolor{blue}{000000000000000011101}
+                3.625 = {(-1)}^0 \cdot (1+0,8125) \cdot 2^{128 - 127} = \textcolor{red}{0}\ \textcolor{green}{10000000}\ \textcolor{blue}{110100000000000000000000}
             \end{equation*}
     \end{enumerate}
     \section{Bitinterpretation}
     \begin{enumerate}[label=(\alph*)]
-        \item
+        \item Vorzeichen in \textcolor{red}{rot}, Exponent in \textcolor{green}{grün}, Mantisse in \textcolor{blue}{blau}.
             \begin{eqnarray*}
                 &&{4496A000}_{16} \\&=&
-                0100\ 0100\ 1001\ 0101\ 1010\ 0000\ 0000\ 0000 \\&=& 
-                0\ 10001001\ 00101011010000000000000 \\&=&
-                {(-1)}^0 \cdot 1417216 \cdot 2^{137-127} \\&=&
-                {1451229184}_{10}
+                0100\ 0100\ 1001\ 0110\ 1010\ 0000\ 0000\ 0000 \\&=& 
+                \textcolor{red}{0}\ \textcolor{green}{10001001}\ \textcolor{blue}{00101101010000000000000} \\&=&
+                {(-1)}^0 \cdot \left(1+\frac{1}{8}+\frac{1}{32}+\frac{1}{64}+\frac{1}{256}+\frac{1}{1024}\right) \cdot 2^{137-127} \\&=&
+                {1205}_{10}
             \end{eqnarray*}
         \item
             Erste Zahl:
