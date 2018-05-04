@@ -1,0 +1,63 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{float}
+
+\title{Grundlagen der Betriebssysteme}
+\author{Tim Luchterhand, Paul Nykiel (Gruppe 017)}
+
+\begin{document}
+    \maketitle
+    \section{Befehlsabarbeitung}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+            Der Prozessor wiederholt jeden Befehlszyklus folgende Aufgaben:
+            \begin{enumerate}
+                \item Lade Befehlsregister aus PC (in Instruktionsregister)
+                \item Interpretiere den Befehl
+                \item Führe den Befehl aus
+                \item PC inkrementieren
+            \end{enumerate}
+        \item $ $
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{cccc}
+                    \toprule
+                    Befehl & $\text{R}_0$ & $\text{R}_1$ & PC \\
+                    \midrule
+                       & e6 & 04 & 00 \\
+                    00 & a4 & 04 & 04 \\
+                    04 & a4 & 04 & a4 \\
+                    a4 & 02 & 04 & a8 \\
+                    a8 & 02 & 02 & ac \\
+                    ac & 02 & 02 & b0 \\
+                    b0 & 02 & 02 & b4 \\
+                    b4 & 02 & 02 & a8 \\
+                    a8 & 02 & 00 & ac \\
+                    ac & 02 & 00 & b0 \\
+                    b0 & 02 & 00 & 08 \\
+                    08 & 02 & 00 & 00 \\
+                    0c & 02 & 00 &    \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+    \end{enumerate}
+    \section{Interrupts}
+    \begin{enumerate}[label=(\alph*)]
+        \item Es kommt ein Trapp-Interrupt vor (durch Aufrufen des Stop Befehls), um dem Betriebssystem zu signalisieren, dass das Programm fertig ist.
+        \item Der Wert von $\text{R}_1$ muss vor der Ausführung
+            gespeichert werden und danach wieder nach $\text{R}_1$ 
+            geladen werden.
+        \item TODO
+        \item TODO
+    \end{enumerate}
+\end{document}

@@ -9,6 +9,8 @@ script:
     - mv main.pdf output/Blatt01.pdf
     - latexmk -pdf Blatt02/main.tex
     - mv main.pdf output/Blatt02.pdf
+    - latexmk -pdf Blatt03/main.tex
+    - mv main.pdf output/Blatt03.pdf
 
 deploy:
     provider: pages
