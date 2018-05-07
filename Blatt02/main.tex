@@ -48,6 +48,55 @@
                 3.625 = {(-1)}^0 \cdot (1+0,8125) \cdot 2^{128 - 127} = \textcolor{red}{0}\ \textcolor{green}{10000000}\ \textcolor{blue}{110100000000000000000000}
             \end{equation*}
     \end{enumerate}
+    \section{Gleitkomma Interpretationen}
+    \begin{enumerate}[label=(\alph*)]
+        \item Addition:
+            \begin{equation*}
+                2^{128-127} \cdot 1.0010111 + 2^{128-127} \cdot 1.1001011 = 2^{129-127} \cdot 1.0110001
+            \end{equation*}
+            Multiplikation:
+            \begin{equation*}
+                2^{128-127} \cdot 1.0010111 \cdot 2^{128-127} \cdot 1.1001011 = 2^{129 - 127} \cdot 1.11011110111101
+            \end{equation*}
+            Division:
+            \begin{equation*}
+                2^{128-127} \cdot 1.0010111 / 2^{128-127} \cdot 1.1001011 = 2^{127 - 127} \cdot 1.000000011
+            \end{equation*}
+        \item Addition:
+            \begin{eqnarray*}
+                -1 \cdot 2^{131-127} \cdot 1.1011 + 2^{127-127} \cdot 1.000011 
+                &\stackrel{\text{Auf größeren Exponenten normalisieren}}{=}&\\
+                -1 \cdot 2^{131-127} \cdot 1.011 + 2^{131-127} \cdot 0.0001000011 &=&\\
+                -1 \cdot 2^{131-127} \cdot 1.010011111
+            \end{eqnarray*}
+            Multiplikation:
+            \begin{eqnarray*}
+                -1 \cdot 2^{131-127} \cdot 1.1011 \cdot 2^{127-127} \cdot 1.000011 &=&\\                 
+                -1 \cdot 2^{131-127} \cdot 1.110001001
+            \end{eqnarray*}
+            Division:
+            \begin{eqnarray*}
+                -1 \cdot 2^{131-127} \cdot 1.1011 / 2^{127-127} \cdot 1.000011 &=&\\                 
+                -1 \cdot 2^{131-127} \cdot 1.100111001
+            \end{eqnarray*}
+        \item Addition:
+            \begin{eqnarray*}
+                -1 \cdot 2^{128-127} \cdot 1.1010011 + -1 \cdot 2^{133-127} \cdot 1.0101011
+                &\stackrel{\text{Auf größeren Exponenten normalisieren}}{=}&\\
+                -1 \cdot 2^{133-27} \cdot 0.000011010011 + -1 \cdot 2^{133-127} \cdot 1.0101011 &=&\\
+                -1 \cdot 2^{133-27} \cdot 1.01100011
+            \end{eqnarray*}
+            Multiplikation
+            \begin{eqnarray*}
+                -1 \cdot 2^{128-127} \cdot 1.1010011 \cdot -1 \cdot 2^{133-127} \cdot 1.0101011 &=&\\
+                2^{135-127} \cdot 1.0001101
+            \end{eqnarray*}
+            Division:
+            \begin{eqnarray*}
+                -1 \cdot 2^{128-127} \cdot 1.1010011 / -1 \cdot 2^{133-127} \cdot 1.0101011 &=&\\
+                2^{122} \cdot 1,001111
+            \end{eqnarray*}
+    \end{enumerate}
     \section{Bitinterpretation}
     \begin{enumerate}[label=(\alph*)]
         \item Vorzeichen in \textcolor{red}{rot}, Exponent in \textcolor{green}{grün}, Mantisse in \textcolor{blue}{blau}.
@@ -65,7 +114,7 @@
                 4 \cdot 16^3 + 4 \cdot 16^2 + 9 \cdot 16^1 + 6 \cdot 16^0 \\&=&
                 {17558}_{10}
             \end{eqnarray*}
-            Zweite Zahl:
+            Zweite Zahl (wir betrachten die Zahl als vorzeichenlose Zahl):
             \begin{eqnarray*}
                 &&{A000}_{16} \\&=&
                 10 \cdot 16^3 + 0 \cdot 16^2 + 0 \cdot 16^1 + 0 \cdot 16^0 \\&=&
@@ -73,14 +122,15 @@
             \end{eqnarray*}
     \end{enumerate}
     \section{UTF8 Darstellung}
+    Startsequenz in \textcolor{green}{grün}, Bytestartsequenz in \textcolor{red}{rot}, Daten in \textcolor{blue}{blau}.
     \begin{enumerate}[label=(\alph*)]
         \item
             \begin{equation*}
-                \text{U+}202E = 0010\ 0000\ 0010\ 1110
+                \text{U+}202E = \textcolor{green}{1110} \ \textcolor{red}{\ 0010} \  \textcolor{blue}{10} \textcolor{red}{00\ 0000} \ \textcolor{blue}{10} \textcolor{red}{10\ 1110}
             \end{equation*}
         \item
             \begin{equation*}
-                1111\ 0000\ 1001\ 1111\ 1001\ 1000\ 1000\ 1000 = \text{U+}F09F9888
+                \textcolor{green}{1111\ 0} \textcolor{red}{000}\ \textcolor{blue}{10} \textcolor{red}{01\ 1111}\ \textcolor{blue}{10} \textcolor{red}{01\ 1000}\ \textcolor{blue}{10} \textcolor{red}{00\ 1000} = \text{U+}1F608
             \end{equation*}
     \end{enumerate}
 \end{document}
