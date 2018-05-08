@@ -53,11 +53,12 @@
     \end{enumerate}
     \section{Interrupts}
     \begin{enumerate}[label=(\alph*)]
-        \item Es kommt ein Trapp-Interrupt vor (durch Aufrufen des Stop Befehls), um dem Betriebssystem zu signalisieren, dass das Programm fertig ist.
-        \item Der Wert von $\text{R}_1$ muss vor der Ausführung
-            gespeichert werden und danach wieder nach $\text{R}_1$ 
-            geladen werden.
-        \item TODO
-        \item TODO
+        \item Es kommt ein Syscall vor (durch Aufrufen des Stop Befehls bzw. des Ausgabe-Befehls), um dem Betriebssystem zu signalisieren, dass das Programm fertig ist bzw. eine Ausgabe zu tätigen.
+        \item Alle Register (auch PC und CCR) werden in Registern gesichert. Dann wird in den Kernel-Mode gewechselt und der PC für die ISR geladen.
+        \item Vor ausführen des Interrupts muss das passende Interrupt-Flag gelöscht werden (Befehl ${5\text{C}}_{16}$), damit der Interrupt nach ausführen nicht sofort erneut ausgeführt wird. 
+            
+            Nach ausführen des Interrupts (Befehl ${64}_{16}$) muss der Befehl RTI aufgerufen werden, um den ursprünglichen Zustand wiederherzustellen.
+        \item Der Interrupt vor ${\text{B}0}_{16}$ könnte einerseits ein externer Interrupt sein (ausgelöst durch Timer oder Peripherie), andererseits ein User-Interrupt (ausgelöst durch das Aufrufen des Ausgabe-Befehls).
+        \item Außer Trap und externem Interrupt gibt es noch den internen Interrupt, der bei internen Fehlern/Exceptions (z.B. Division durch Null) auftritt.
     \end{enumerate}
 \end{document}
