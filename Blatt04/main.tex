@@ -12,6 +12,7 @@
 \usepackage{booktabs}
 \usepackage{float}
 \usepackage{tikz-timing}
+\usepackage{tikz}
 
 \title{Grundlagen der Betriebssysteme}
 \author{Tim Luchterhand, Paul Nykiel (Gruppe 017)}
@@ -22,28 +23,21 @@
     \begin{enumerate}[label=(\alph*)]
         \item Prozesse können sich in den folgenden Zuständen befinden:
             \begin{enumerate}
-                \item Starten
+                \item Erzeugt
                 \item Bereit
                 \item Laufend
-                \item Wartend
+                \item Blockiert
                 \item Gestoppt
             \end{enumerate}
         \item $ $
-            \begin{table}[H]
-                \centering
-                \begin{tabular}{c|ccccc}
-                    \toprule 
-                    Starten & Bereit & Laufend & Wartend & Gestoppt \\
-                    \midrule
-                    Starten \\
-                    Bereit & Prozess fertig initialisiert \\
-                    Laufend & - & Prozess wird vom Scheduler ausgewählt \\
-                    Wartend & \\
-                    Gestoppt & \\
-                    \bottomrule
-                \end{tabular}
-                \caption{Mögliche Zustandsübergänge}
-            \end{table}
+            \begin{enumerate}
+                \item Erzeugt $\stackrel{\text{Zugelassen}}{\longrightarrow}$ Bereit
+                \item Bereit $\stackrel{\text{Scheduler wählt Prozess aus}}{\longrightarrow}$ Laufend
+                \item Laufend $\stackrel{\text{Prozess fertig}}{\longrightarrow}$ Gestoppt
+                \item Laufend $\stackrel{\text{Prozess wird unterbrochen}}{\longrightarrow}$ Bereit
+                \item Laufend $\stackrel{\text{Prozess wartet}}{\longrightarrow}$ Blockiert
+                \item Blockiert $\stackrel{\text{Warten fertig}}{\longrightarrow}$ Bereit
+            \end{enumerate}
     \end{enumerate}
     \section{Shortest Job First Scheduling}
     \begin{enumerate}[label=(\alph*)]
@@ -56,15 +50,21 @@
             \begin{figure}[H]
                 \centering
                 \begin{tikztimingtable}
-                    \begin{scope}
-                        \horlines{}
-                        \foreach \x in {1,...,6}
-                            \draw (\x,1) -- (\x, 4)
-                    \end{scope}
-                    Prozess A & LL H  \\
-                    Prozess B & LL H  \\
-                    Prozess C & LL H  \\
+                    Prozess A & [L]HL LL LL LH HH LL LL HH HH LS \\
+                    Prozess B & [L] SH LH LS SS SS SS SS SS SS  \\
+                    Prozess C & SL HL HH HL SS SS SS SS SS \\
                 \end{tikztimingtable}
+                \caption{Präemptives Scheduling}
+            \end{figure}
+        \item $ $
+            \begin{figure}[H]
+                \centering
+                \begin{tikztimingtable}
+                    Prozess A & [L] HH LL LL LL HH L \\
+                    Prozess B & SL HL LL LH LS S\\
+                    Prozess C & SL LH HH HL SS S\\
+                \end{tikztimingtable}
+                \caption{Nicht-Präemptives Scheduling}
             \end{figure}
     \end{enumerate}
 \end{document}
