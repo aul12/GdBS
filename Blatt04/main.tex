@@ -49,20 +49,30 @@
         \item $ $
             \begin{figure}[H]
                 \centering
-                \begin{tikztimingtable}
-                    Prozess A & [L]HL LL LL LH HH LL LL HH HH LS \\
-                    Prozess B & [L] SH LH LS SS SS SS SS SS SS  \\
-                    Prozess C & SL HL HH HL SS SS SS SS SS \\
+                \begin{tikztimingtable}[timing/slope=0, timing/wscale=4.0]
+                    Prozess A & [L]hl ll ll lh hh ll ll hh hh l \\
+                    Prozess B & [L] sh lh l  \\
+                    Prozess C & sl hl hh hl  \\
+                    \begin{extracode}
+                        \vertlines[help lines]{0, 4, ..., \twidth}
+                        \foreach \x in {0, ...,9}
+                            \node at (\x*4,2.5) {\x s};
+                    \end{extracode}
                 \end{tikztimingtable}
                 \caption{Präemptives Scheduling}
             \end{figure}
         \item $ $
             \begin{figure}[H]
                 \centering
-                \begin{tikztimingtable}
-                    Prozess A & [L] HH LL LL LL HH L \\
-                    Prozess B & SL HL LL LH LS S\\
-                    Prozess C & SL LH HH HL SS S\\
+                \begin{tikztimingtable}[timing/slope=0, timing/wscale=4.0]
+                    Prozess A & [L] hh ll ll ll hh l \\
+                    Prozess B & sl hl ll lh l\\
+                    Prozess C & sl lh hh hl \\
+                    \begin{extracode}
+                        \vertlines[help lines]{0, 4, ..., \twidth}
+                        \foreach \x in {0, ...,5}
+                            \node at (\x*4,2.5) {\x s};
+                    \end{extracode}
                 \end{tikztimingtable}
                 \caption{Nicht-Präemptives Scheduling}
             \end{figure}
