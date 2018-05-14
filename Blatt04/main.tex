@@ -41,12 +41,12 @@
     \end{enumerate}
     \section{Shortest Job First Scheduling}
     \begin{enumerate}[label=(\alph*)]
-        \item Bei shortest Job First werden viele Prozesse in kurzer Zeit abgearbeitet, da die einzelnen Prozesse jeweils nur kurz laufen.
+        \item Bei shortest Job First werden viele Prozesse in kurzer Zeit abgearbeitet, da die einzelnen Prozesse jeweils nur kurz laufen. Der Durchsatz ist also hoch.
         \item Prozesse die lange laufen werden gar nicht oder nur sehr spät ausgeführt.
-        \item Beim präemptiven shortest Job First Scheduling wird auch bei einem \glqq{}freiwilligen\grqq{} Aufrufen des Schedulers (z.B. durch einen Syscall), der Scheduling-Algorithmus aufgerufen und wartende Prozesse die kürzer brauchen ausgeführt.
+        \item Beim präemptiven shortest Job First Scheduling wird auch bei einem \glqq{}freiwilligen\grqq{} Aufrufen des Schedulers (z.B. durch einen Syscall) der Scheduling-Algorithmus aufgerufen. Wartende Prozesse, die kürzer brauchen als der eben noch laufnde Prozess, werden dann anstatt diesem ausgeführt.
 
             Beim nicht präemptiven Shortest Job First Scheduling läuft ein Prozess ohne Unterbrechung. Der Prozess wird nur unterbrochen wenn er wartet oder stoppt.
-        \item $ $
+        \item Ein High-Sigal bedeutet, dass der jeweilige Prozess gerade läuft. Ein Low-Signal bedeutet, dass der Prozess bereit ist.
             \begin{figure}[H]
                 \centering
                 \begin{tikztimingtable}[timing/slope=0, timing/wscale=4.0]
