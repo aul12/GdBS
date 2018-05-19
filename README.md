@@ -7,3 +7,4 @@ Lösungen zu den Übungsblättern der Vorlesung "Grundlagen der Betriebssysteme"
  * [Blatt 2](https://aul12.github.io/GdBS/Blatt02.pdf)
  * [Blatt 3](https://aul12.github.io/GdBS/Blatt03.pdf)
  * [Blatt 4](https://aul12.github.io/GdBS/Blatt04.pdf)
+ * [Blatt 5](https://aul12.github.io/GdBS/Blatt05.pdf)
