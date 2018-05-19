@@ -1,0 +1,74 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tikz-timing}
+\usepackage{tikz}
+
+\title{Grundlagen der Betriebssysteme}
+\author{Tim Luchterhand, Paul Nykiel (Gruppe 017)}
+
+\begin{document}
+    \maketitle
+    \section{Round-Robin und Highest Priority Scheduling}
+    Ein High-Sigal bedeutet, dass der jeweilige Prozess gerade läuft. Ein Low-Signal bedeutet, dass der Prozess bereit ist.
+    \begin{enumerate}[label=(\alph*)]
+        \item $ $
+            \begin{figure}[H]
+                \centering
+                \begin{tikztimingtable}[timing/slope=0, timing/wscale=4.0]
+                    Prozess A & [L] hh lh hl ll lh hh hl s\\
+                    Prozess B &     sl hl ll lh ls ss ss s\\
+                    Prozess C &     ss sl lh hl hl ss ss s\\
+                    \begin{extracode}
+                        \vertlines[help lines]{0, 4, ..., \twidth}
+                        \foreach \x in {0, ...,7}
+                            \node at (\x*4,2.5) {\x s};
+                    \end{extracode}
+                \end{tikztimingtable}
+                \caption{Round-Robin Scheduling}
+            \end{figure}
+        \item $ $
+            \begin{figure}[H]
+                \centering
+                \begin{tikztimingtable}[timing/slope=0, timing/wscale=4.0]
+                    Prozess A & [L] hh hh ll ll lh hh hl s \\
+                    Prozess B &     sl ll hl ll ll ll lh l \\
+                    Prozess C &     ss sl lh hh hl ss ss s \\
+                    \begin{extracode}
+                        \vertlines[help lines]{0, 4, ..., \twidth}
+                        \foreach \x in {0, ...,7}
+                            \node at (\x*4,2.5) {\x s};
+                    \end{extracode}
+                \end{tikztimingtable}
+                \caption{Highest Priority First Scheduling (nicht präemptiv)}
+            \end{figure}
+    \end{enumerate}
+    \section{Threads und Prozesse}
+            \begin{enumerate}[label=(\alph*)]
+                \item 
+                    \begin{enumerate}
+                        \item Daten (Variablen \ldots)
+                        \item Datein (Dateideskriptoren)
+                    \end{enumerate}
+                \item
+                    \begin{enumerate}
+                        \item Rechenzeit
+                    \end{enumerate}
+                \item Nachteile:
+                    \begin{enumerate}
+                        \item Blockierte User Threads blockieren alle Kernel-Threads
+                        \item Echte Parallelität erfordert wiederrum mehrere Kernel-Threads
+                    \end{enumerate}
+                    Da User-Level-Threads ohne Kernel-Threads keine Parallelität bereitstellen braucht es trotzdem Kernel-Threads um Vorteile zu erreichen, damit kann man allerdings auch direkt Kernel-Threads verwenden.
+            \end{enumerate}
+\end{document}
