@@ -1,0 +1,36 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tikz-timing}
+\usepackage{tikz}
+
+\title{Grundlagen der Betriebssysteme}
+\author{Tim Luchterhand, Paul Nykiel (Gruppe 017)}
+
+\begin{document}
+    \maketitle
+    \section{Nebenläufigkeit und Parallelität}
+    \begin{enumerate}[label=(\alph*)]
+        \item Ja, da mehrere Korrekteure gleichzeitig jeweils an einem Übungsblatt arbeiten können.
+        \item Ja, wenn die Aufgaben nicht zusammenhängen, lassen sich Übungsblätter nebenläufig korrigieren.
+        \item Parallelität $\Rightarrow$ Nebenläufigkeit (Mathematische Implikation)
+    \end{enumerate}
+    \section{Koordination}
+    \begin{enumerate}[label=(\alph*)]
+        \item Mögliche Punktstände: 3, 4 oder 7. 
+            
+            Falls einer der beiden die Seite lädt, bevor der andere das Ergebnis abgesendet hat, geht der Eintrag des Ersten verloren (\textit{Lost Update}).
+        \item Mit einem Lock-Mechanismus: Die Person, die die Noten eintragen möchte, schickt vor dem Laden der Seite der anderen Person eine Benachrichtigung, mit der Bitte, dass die andere Person nicht auf das Portal zugreifen soll (die Benachrichtigung wird als atomar angesehen). Nach dem Eintragen, sendet der Eintragende wieder eine Benachrichtigung, dass das Portal wieder freigegeben ist.
+        \item Nein, es kann zu einer \textit{Race-Condition} kommen: Wenn eine Person das Portal \glqq{}sperrt\grqq{} kann es dazu führen, dass mehrere Korrekteure gleichzeitig auf die Freigabe warten müssen. Gibt der Korrekteur die Bearbeitung wieder frei, muss entschieden werden welcher Korrektor als nächstes die Punkte eintragen darf.
+    \end{enumerate}
+\end{document}

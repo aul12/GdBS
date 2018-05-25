@@ -41,12 +41,12 @@
             \begin{figure}[H]
                 \centering
                 \begin{tikztimingtable}[timing/slope=0, timing/wscale=4.0]
-                    Prozess A & [L] hh hh ll ll lh hh hl s \\
-                    Prozess B &     sl ll hl ll ll ll lh l \\
-                    Prozess C &     ss sl lh hh hl ss ss s \\
+                    Prozess A & [L] hh hh ll ll lh hh hl ss \\
+                    Prozess B &     sl ll hl ll ll ll lh ls \\
+                    Prozess C &     ss sl lh hh hl ss ss ss \\
                     \begin{extracode}
                         \vertlines[help lines]{0, 4, ..., \twidth}
-                        \foreach \x in {0, ...,7}
+                        \foreach \x in {0, ...,8}
                             \node at (\x*4,2.5) {\x s};
                     \end{extracode}
                 \end{tikztimingtable}
@@ -72,6 +72,6 @@
                         \item Blockierte User Threads blockieren alle Kernel-Threads
                         \item Echte Parallelität erfordert wiederrum mehrere Kernel-Threads
                     \end{enumerate}
-                    Da User-Level-Threads ohne Kernel-Threads keine Parallelität bereitstellen braucht es trotzdem Kernel-Threads um Vorteile zu erreichen, damit kann man allerdings auch direkt Kernel-Threads verwenden.
+                    Da User-Level-Threads ohne Kernel-Threads keine Parallelität bereitstellen, braucht es trotzdem Kernel-Threads, um Vorteile zu erreichen. Dann kann man allerdings auch direkt Kernel-Threads verwenden.
             \end{enumerate}
 \end{document}
