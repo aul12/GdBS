@@ -19,10 +19,10 @@
 
 \begin{document}
     \maketitle
-    \subsection{}
+    \section{Deadlocks}
     \begin{enumerate}[label=(\alph*)]
-        \item Jedes Fahrzeug fährt einen \glqq{}Schritt\grqq{} nach vorne, so dass es sich alle Autos auf der ersten Spur befinden.
-            Dann kann kein Auto weiter fahren, da jedes Auto jeweils blockiert wird.
+        \item Jedes Fahrzeug fährt einen \glqq{}Schritt\grqq{} nach vorne, sodass sich alle Autos auf der ersten Spur befinden.
+            Dann kann kein Auto weiterfahren, da jedes Auto jeweils blockiert wird.
         \item Nein, dieses Szenario gibt es nicht. Angenommen es gäbe diese Situation, dann könnten drei Autos die Kreuzung verlassen. Dadurch wird allerdings das vierte Auto nicht mehr blockiert.
         \item 
             \begin{eqnarray*}
@@ -31,15 +31,15 @@
                 \text{Warten} &\Leftrightarrow& \text{Blockiert} \\
                 \text{Nie überqueren können} &\Leftrightarrow& \text{Deadlock} \\
             \end{eqnarray*}
-        \item Durch einen Lock-Mechanismus (z.B. Semaphoren), kann ein Auto exklusiven \glqq{}Zugriff\grqq{} auf die Kreuzung garantieren. Dadurch kann es zu keinem Deadlock mehr führen.
+        \item Durch einen Lock-Mechanismus (z.B. Semaphoren), kann garantiert wreden, dass nur ein Auto exklusiven Zugriff auf die Straße bekommt.
     \end{enumerate}
-    \subsection{}
+    \section{Semaphore und aktives Warten (Spinlock)}
     \begin{enumerate}[label=(\alph*)]
         \item
-            Vorteil Spinlock: Prozess kann beim Aufheben der Sperre sofort weiterlaufen, ohne auf erst vom Scheduler aufgerufen werden zu müssen.
+            Vorteil Spinlock: Prozess kann beim Aufheben der Sperre sofort weiterlaufen, ohne auf erst vom Scheduler aufgerufen werden zu müssen. Beim Semaphore kann es einen Moment dauern, bis der Prozess wieder an der Reihe ist.
 
-            Vorteil Semaphore: Scheduler kann während des wartens andere Prozesse ausführen, es wird keine CPU-Zeit verschwendet.
-        \item Nein, da ein Spinlock den Prozessor blockiert kann der Prozess der sich im gesperrten Abschnitt befindet nicht weiter ausgeführt werden und den Abschnitt so wieder entsperren.
+            Vorteil Semaphore: Scheduler kann während des wartens andere Prozesse ausführen, es wird keine CPU-Zeit verschwendet, im Gegensatz zum aktiven Warten.
+        \item Nein, da ein Spinlock den Prozessor blockiert, kann der Prozess, der sich im gesperrten Abschnitt befindet, nicht weiter ausgeführt werden. Der Abschnitt bleibt also ewig gesperrt.
         \item Ja, müssen sie, sonst können sich weiterhin mehrere Prozesse gleichzeitig (auf Mehrprozessorsystemen) im kritischen Abschnitt befinden.
     \end{enumerate}
 \end{document}
