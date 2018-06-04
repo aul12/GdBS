@@ -1,0 +1,45 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tikz-timing}
+\usepackage{tikz}
+
+\title{Grundlagen der Betriebssysteme}
+\author{Tim Luchterhand, Paul Nykiel (Gruppe 017)}
+
+\begin{document}
+    \maketitle
+    \subsection{}
+    \begin{enumerate}[label=(\alph*)]
+        \item Jedes Fahrzeug fährt einen \glqq{}Schritt\grqq{} nach vorne, so dass es sich alle Autos auf der ersten Spur befinden.
+            Dann kann kein Auto weiter fahren, da jedes Auto jeweils blockiert wird.
+        \item Nein, dieses Szenario gibt es nicht. Angenommen es gäbe diese Situation, dann könnten drei Autos die Kreuzung verlassen. Dadurch wird allerdings das vierte Auto nicht mehr blockiert.
+        \item 
+            \begin{eqnarray*}
+                \text{Fahrzeug} &\Leftrightarrow& \text{Prozess} \\
+                \text{Kreuzung} &\Leftrightarrow& \text{Ressource (z.B. CPU-Zeit)} \\
+                \text{Warten} &\Leftrightarrow& \text{Blockiert} \\
+                \text{Nie überqueren können} &\Leftrightarrow& \text{Deadlock} \\
+            \end{eqnarray*}
+        \item Durch einen Lock-Mechanismus (z.B. Semaphoren), kann ein Auto exklusiven \glqq{}Zugriff\grqq{} auf die Kreuzung garantieren. Dadurch kann es zu keinem Deadlock mehr führen.
+    \end{enumerate}
+    \subsection{}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+            Vorteil Spinlock: Prozess kann beim Aufheben der Sperre sofort weiterlaufen, ohne auf erst vom Scheduler aufgerufen werden zu müssen.
+
+            Vorteil Semaphore: Scheduler kann während des wartens andere Prozesse ausführen, es wird keine CPU-Zeit verschwendet.
+        \item Nein, da ein Spinlock den Prozessor blockiert kann der Prozess der sich im gesperrten Abschnitt befindet nicht weiter ausgeführt werden und den Abschnitt so wieder entsperren.
+        \item Ja, müssen sie, sonst können sich weiterhin mehrere Prozesse gleichzeitig (auf Mehrprozessorsystemen) im kritischen Abschnitt befinden.
+    \end{enumerate}
+\end{document}
