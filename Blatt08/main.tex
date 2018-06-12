@@ -1,0 +1,71 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tikz-timing}
+\usepackage{tikz}
+
+\title{Grundlagen der Betriebssysteme}
+\author{Tim Luchterhand, Paul Nykiel (Gruppe 017)}
+
+\begin{document}
+    \maketitle
+    \section{FAT}
+    \begin{enumerate}[label=(\alph*)]
+        \item In der zweiten Zeile stehen die Informationen über das jeweilige Cluster (frei, beschädigt, belegt mit Addresse auf das nächste Cluster)
+        \item 
+            \begin{enumerate}
+                \item ${02}_{16}-{04}_{16}-{03}_{16}$
+                \item ${05}_{16}-{06}_{16}-{09}_{16}$ 
+                \item ${07}_{16}$
+                \item ${0B}_{16}-{0F}_{16}$
+                \item ${0C}_{16}-{0D}_{16}-{0E}_{16}-{10}_{16}-{11}_{16}$            
+            \end{enumerate}
+        \item 
+            \begin{enumerate}
+                \item Datei 1 korrespondiert zu c) (1 Cluster). 
+                    
+                    Minimale Größe: 1 Byte, Maximale Größe 8KB
+                \item Datei 2 korrespondiert zu a) oder b) (3 Cluster). 
+                    
+                    Minimale Größe: 16KB + 1 Byte, Maximale Größe 24KB
+                \item Datei 3 korrespondiert zu a) oder b) (3 Cluster). 
+                    
+                    Minimale Größe: 16KB + 1 Byte, Maximale Größe 24KB
+                \item Datei 4 korrespondiert zu d) (2 Cluster). 
+                    
+                    Minimale Größe: 8KB + 1 Byte, Maximale Größe 16KB
+                \item Datei 5 korrespondiert zu e) (5 Cluster). 
+                    
+                    Minimale Größe: 40KB + 1 Byte, Maximale Größe 48KB
+            \end{enumerate}
+    \end{enumerate}
+
+    \section{NTFS}
+    Es wird angenommen, dass für die Datei rsa.key zwei Cluster direkt hintereinander im Speicher frei sind.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{p{.33\textwidth}|p{.12\textwidth}|p{.15\textwidth}|p{.2\textwidth}|p{.2\textwidth}}
+            \toprule
+            Standardinfo & Dateiname & Zugriffsrechte & Daten \\
+            \midrule
+            Länge: 100 Bytes,\\ \textit{MS-DOS Attribute, Zeitstempel, Anzahl der Hardlinks, Sequenznummer der gültigen File Reference} & hallo.txt & \textit{Zugriffsrechte} & Daten\\
+            \midrule
+            Länge: 8 KBytes,\\ \textit{MS-DOS Attribute, Zeitstempel, Anzahl der Hardlinks, Sequenznummer der gültigen File Reference} & rsa.key& \textit{Zugriffsrechte} & VCN: 0 \textit{LCN} Anzahl Cluster: 2\\
+            \midrule
+            Länge: 44 KBytes,\\ \textit{MS-DOS Attribute, Zeitstempel, Anzahl der Hardlinks, Sequenznummer der gültigen File Reference} & cat.jpg& \textit{Zugriffsrechte} & VCN: 0 LCN: 17 Anzahl Cluster: 1\newline
+                VCN: 1 LCN: 19 Anzahl Cluster: 1\newline
+                VCN: 2 LCN: 22 Anzahl Cluster: 9\\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{document}
