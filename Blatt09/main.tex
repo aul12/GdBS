@@ -1,0 +1,92 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tikz-timing}
+\usepackage{tikz}
+
+\title{Grundlagen der Betriebssysteme}
+\author{Tim Luchterhand, Paul Nykiel (Gruppe 017)}
+
+\begin{document}
+    \maketitle
+    \section{Journaling und Log-Structured File Systems}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+            \begin{enumerate}
+                \item Änderung an Block 2 in Log eintragen
+                \item Änderung an Block 2 tatsächlich durchführen
+                \item Änderung an Block 3 in Log eintragen
+                \item Änderung an Block 3 tatsächlich durchführen
+            \end{enumerate}
+            Nach Abschluss der Änderung ist sowohl die eigentliche Änderung an Block 2 und 3, als auch ein korrespondierender Eintrag im Log sichtbar.
+        \item 
+            \begin{enumerate}
+                \item Block 2 kopieren und Änderungen durchführen
+                \item Refernenzen auf Block 2 in der Inode der Datei anpassen
+                \item Inode Tabelle kopieren und Verweis auf kopierte Inode ändern
+                \item Refernenz des Superblocks auf kopierte Inode-Tabelle ändern (atomar).
+                \item Block 3 kopieren und Änderungen durchführen
+                \item Refernenzen auf Block 3 in der Inode der Datei anpassen
+                \item Inode Tabelle kopieren und Verweis auf kopierte Inode ändern
+                \item Refernenz des Superblocks auf kopierte Inode-Tabelle ändern (atomar).
+            \end{enumerate}
+            Nach erfolgreichem Abschluss der Transaktion sind lediglich die Änderungen in der Datei sichtbar, es existiert kein Log.
+        \item Bei einem Journaling FS kann es eventuell möglich sein, die Datei wiederherzustellen. Dies ist dann möglich, wenn aus dem Log-File ersichtlich ist was zu tun ist. Sonst wird in das Dateisystem durch einen Undo der letzten Transaktion in einen konsistenten Zustand gebracht. 
+            
+            Bei einem Log-Structured FS ist das Wiederherstellen nicht möglich, das FS ist aber garantiert in einem konsistenten Zustand.
+    \end{enumerate}
+
+    \section{Speicherlokalität}
+    \begin{enumerate}[label=(\alph*)]
+        \item $ $
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{ccccccccccccccccc} 
+                    \toprule
+                    Addresse & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & A & B & C & D & E & F\\
+                    \midrule
+                    Wert & 10 & 4 & 34 & 8 & 11 & 6 & 12 & A  & 21 & FF & 13 & C & 14 & FF \\
+                    \bottomrule
+                \end{tabular}
+                \caption{Eine Liste der Länge 5, mit den Elementen 10 bis 14}
+            \end{table}
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{ccccccccccccccccc} 
+                    \toprule
+                    Addresse & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & A & B & C & D & E & F\\
+                    \midrule
+                    Wert &  & & 34 & 8 & & & & & 21 & FF & 40 & 41 & 42 & 43 & 44 & 45\\
+                    \bottomrule
+                \end{tabular}
+                \caption{Ein Array der Länge 6, mit den Werten 40 bis 45}
+            \end{table}
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{ccccccccccccccccc} 
+                    \toprule
+                    Addresse & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & A & B & C & D & E & F\\
+                    \midrule
+                    Wert & 4  &  50 & 34 & 8 & A & 51 & 52& 53 & 21 & FF & FF & 54 & 55 & 56 \\
+                    \bottomrule
+                \end{tabular}
+                \caption{Eine verlinkte Arrayliste der Länge 7, mit den Elementen 50 bis 56}
+            \end{table}
+        \item
+            \begin{itemize}
+                \item Liste: 5 Zugriffe
+                \item Array: 2 Zugriffe
+                \item Verlinkte-Arrayliste: 5 Zugriffe
+            \end{itemize}
+    \end{enumerate}
+\end{document}
