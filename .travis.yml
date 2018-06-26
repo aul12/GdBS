@@ -23,8 +23,10 @@ script:
     - mv main.pdf output/Blatt08.pdf
     - latexmk -pdf Blatt09/main.tex
     - mv main.pdf output/Blatt09.pdf
-    - latexmk -pdf Blatt10/main.tex
-    - mv main.pdf output/Blatt10.pdf
+    - cd Blatt 10
+    - latexmk -pdf main.tex
+    - cd ..
+    - mv Blatt10/main.pdf output/Blatt10.pdf
 
 deploy:
     provider: pages
