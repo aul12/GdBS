@@ -1,0 +1,65 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} % this is needed for umlauts
+\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[T1]{fontenc} 
+\usepackage{commath}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tikz-timing}
+\usepackage{tikz}
+\usepackage{multirow}
+
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+
+\title{Grundlagen der Betriebssysteme}
+\author{Tim Luchterhand, Paul Nykiel (Gruppe 017)}
+
+\begin{document}
+    \maketitle
+    \section{Fahrstuhl-Scheduling}
+    Es wird angenommen, dass der Fahrstuhl nach jedem Paket in dem Stockwerk verbleibt.
+    \begin{enumerate}[label=(\alph*)]
+            \item 
+                Paket 1: \{5,3,7\} 
+
+                Paket 2: \{6,9,2\} 
+
+                Paket 3: \{1,4,8\} 
+
+                Zurückgelegte Strecke: 26 Stockwerke
+            \item 
+                Paket 1: \{5,7,3\} 
+
+                Paket 2: \{2,6,9\} 
+
+                Paket 3: \{8,4,1\} 
+
+                Zurückgelegte Strecke: 23 Stockwerke
+
+            \item 
+                \{5,7,9,6,4,3,2,1,8\}
+
+                Zurückgelegte Strecke: 20 Stockwerke
+    \end{enumerate}
+
+    \section{Gemischte Rückblicke}
+    \begin{enumerate}[label=(\alph*)]
+        \item Es sind 8, 16, 24 und 32 Bit breite Zeichen möglich
+        \item Read, Write, Execute
+        \item Access-Control-List
+        \item 
+            \begin{eqnarray*}
+                -{(15)}_{16} = {256}_{10} - {21}_{10} = {235}_{10} = {1110\ 1011}_{2}
+            \end{eqnarray*}
+        \item Bei Algorithmen, die die FIFO-Anomalie aufweisen, kann es sein, dass trotz mehr verfügbaren Speicherkacheln mehr Seiten ein- und auslagerungen 
+            notwendig sind, als bei weniger verfügbaren Speicherkacheln.
+        \item
+            ${0000}_4$ und ${1000}_4$
+    \end{enumerate}
+\end{document}
